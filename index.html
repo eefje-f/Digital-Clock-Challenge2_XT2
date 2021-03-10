@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Digital clock on Mars </title>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrap">
+        <h1 class="wrap" id="greeting"></h1>
+        <h1 class="wrap" id="clock"></h1>
+      </div>
+    </div>
+    <script>
+      function clock(){
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        var midday;
+
+        hours = updateTime(hours);
+        minutes = updateTime(minutes);
+        seconds = updateTime(seconds);
+        var name = "Eef";
+
+        //IF ElSE CONDITION
+        midday = (hours >= 12) ? "PM" : "AM";
+
+        document.getElementById("clock").innerHTML = hours + ":" + minutes + ":" + seconds + midday;
+
+        var time = setTimeout(function(){
+          clock();
+        }, 1000);
+
+        //Good morning, afternoon, evening condition
+        if(hours < 12){
+          var greeting = "Good Morning" + " " + name + " " + "Time to wake up!";
+          document.body.style.backgroundColor = "#FFF2B4";
+          document.body.style.backgroundImage = "url('toothbrush.png')";
+        }
+        if(hours >= 12 && hours <= 18){
+          var greeting = "Good Afternoon" + " " + name;
+          document.body.style.backgroundColor = "#DBEFFE";
+          document.body.style.backgroundImage = "url('hot-drink.png')";
+        }
+        if(hours >= 18 && hours <= 24){
+          var greeting = "Good evening" + " " + name + " " + "Take your time to get in bed";
+          document.body.style.backgroundColor = "#232323";
+          document.body.style.backgroundImage = "url('dream.png')";
+        }
+        document.getElementById("greeting").innerHTML = greeting;
+      }
+
+      function updateTime(k){
+        if(k < 10){
+          return "0" + k
+        }
+        else{
+          return k;
+        }
+      }
+
+      //call clock function
+      clock();
+    </script>
+  </body>
+</html>

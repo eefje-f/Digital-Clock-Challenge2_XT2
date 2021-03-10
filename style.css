@@ -1,0 +1,54 @@
+html{
+  box-sizing: border-box;
+  max-width: 90%;
+  height:100%;
+  margin: auto;
+}
+
+.container{
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+  ". . ."
+  "wrap wrap wrap"
+  ". . .";
+}
+
+.wrap{
+  grid-area: wrap;
+  text-align: center;
+  margin-top: 9%;
+  font-family: roboto;
+  font-size: 25px;
+  animation-name: animation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animation {
+  0%   {color: red;}
+  25%  {color: yellow;}
+  50%  {color: blue;}
+  100% {color: green;}
+}
+
+@media only screen and (min-width: 768px){
+.wrap{
+  font-size: 30px;
+ }
+}
+
+@media only screen and (min-width: 1280px){
+.wrap{
+    margin-top: 2.5%;
+    font-size: 35px;
+  }
+}
+
+@media only screen and (min-width:1920px){
+.wrap{
+  font-size: 40px;
+ }
+}
